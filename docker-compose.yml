@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: grupo-confianca-container-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root-grupo-confianca
+      MYSQL_DATABASE: grupo-confianca-db
+      MYSQL_USER: lucas
+      MYSQL_PASSWORD: lucas-grupo-confianca
+    ports:
+      - "3306:3306"
+
+  php:
+    container_name: grupo-confianca-container-php
+    build: .
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    links:
+      - mysql
