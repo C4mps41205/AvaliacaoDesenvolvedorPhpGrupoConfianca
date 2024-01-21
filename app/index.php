@@ -25,5 +25,9 @@
             $indexController = new IndexController();
             $indexController->Delete();
             break;
+        case '/index/update':
+            $indexController = new IndexController();
+            $indexController->Update();
+            break;
     }
 ?>

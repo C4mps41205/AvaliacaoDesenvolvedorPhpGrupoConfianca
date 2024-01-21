@@ -35,7 +35,7 @@ class Client extends Database
             $stringWhere = rtrim($stringWhere, " AND");
             $stringWhere = rtrim($stringWhere, " WHERE ");
 
-            $sqlSelect = "SELECT * FROM ". $this->table ." ". $stringWhere;
+            $sqlSelect = "SELECT * FROM ". $this->table ." left join state on state.id = client_register.state ". $stringWhere;
             $query = $this->conn->query($sqlSelect);
             $fetch = $query->fetchAll();
 
@@ -46,7 +46,7 @@ class Client extends Database
         } catch (PDOException $exception) 
         {
             $mensage = array(
-                "status" => 200,
+                "status" => 500,
                 "response" => $exception->getMessage()
             );
         }
@@ -75,6 +75,52 @@ class Client extends Database
         {
             $mensage = array(
                 "status" => 200,
+                "response" => $exception->getMessage()
+            );
+        }
+
+        return $mensage;
+    }
+
+    public function Update($data) : array
+    {
+        $mensage = array();
+        try 
+        {
+            $sqlString = "UPDATE " . $this->table . " SET name = :name,
+                                                        itr = :itr,
+                                                        birthdate = :birthdate,
+                                                        state = :state,
+                                                        city = :city,
+                                                        neighborhood = :neighborhood,
+                                                        phone = :phone,
+                                                        email = :email
+                                                    WHERE idClient = :id";
+
+            $query = $this->conn->prepare($sqlString);
+
+            $query->bindParam(':name', $data['name']);
+            $query->bindParam(':itr', $data['itr']);
+            $query->bindParam(':birthdate', $data['birthdate']);
+            $query->bindParam(':state', $data['state']);
+            $query->bindParam(':city', $data['city']);
+            $query->bindParam(':neighborhood', $data['neighborhood']);
+            $query->bindParam(':phone', $data['phone']);
+            $query->bindParam(':email', $data['email']);
+            $query->bindParam(':id', $data['idClient']);
+
+            if($query->execute())
+            {
+                $mensage = array(
+                    "status" => 200,
+                    "response" => "success"
+                );
+            }
+
+        } catch (PDOException $exception) 
+        {
+            $mensage = array(
+                "status" => 500,
                 "response" => $exception->getMessage()
             );
         }
