@@ -42,8 +42,35 @@ class Client extends Database
             $mensage = array(
                 "status" => 200,
                 "response" => $fetch,
-                "sqlstring" => $sqlSelect
             );
+        } catch (PDOException $exception) 
+        {
+            $mensage = array(
+                "status" => 200,
+                "response" => $exception->getMessage()
+            );
+        }
+
+        return $mensage;
+    }
+
+    public function Delete($id = null) : array
+    {
+        $mensage = array();
+
+        try
+        {
+            $sqlSelect = "DELETE FROM ". $this->table ." WHERE id = ". $id['id'];
+            $query = $this->conn->query($sqlSelect);
+
+            if($query)
+            {
+                $mensage = array(
+                    "status" => 200,
+                    "response" => "success",
+                );
+            }
+
         } catch (PDOException $exception) 
         {
             $mensage = array(

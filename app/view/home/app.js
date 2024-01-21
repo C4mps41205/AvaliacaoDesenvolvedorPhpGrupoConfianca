@@ -2,7 +2,6 @@ $(document).ready(() =>
 {
     Read();
     $("#buttonSearch").click(() => Read());
-   
 })
 const AjaxRequest = async (params = {}) => 
 {
@@ -84,8 +83,8 @@ const Read = async () =>
                 <td style="text-align: center">${eachData.phone == undefined ? "" : eachData.phone}</td>
                 <td style="text-align: center">${eachData.email == undefined ? "" : eachData.email}</td>
                 <td style="text-align: center">
-                    <button class="btn btn-success btn-xs" title="Clique aqui para exibir esse usuário" onclick="ReadById(${requestData.id})" data-toggle="modal" data-target="#EditModal"><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button class="btn btn-danger btn-xs"  title="Clique aqui para deletar esse usuário" onclick="Delete(${requestData.id})"><i class="fa-solid fa-trash"></i></button>
+                    <button class="btn btn-success btn-xs" title="Clique aqui para exibir esse usuário" onclick="ReadById(${eachData.id})" data-toggle="modal" data-target="#EditModal"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-danger btn-xs"  title="Clique aqui para deletar esse usuário" onclick="Delete(${eachData.id})"><i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
         `
@@ -105,9 +104,40 @@ const ReadById = (id) =>
 
 }
 
-const Delete = (id) =>
+const Delete = async (id) =>
 {
+    Swal.fire
+    ({
+        title: "Atenção",
+        icon: "warning",
+        text: "Você deseja excluir esse usuário?",
+        showDenyButton: false,
+        showCancelButton: true,
+        confirmButtonText: "Sim",
+        denyButtonText: "Não"
+    }).then(async (result) => 
+      {
+        if (result.isConfirmed) 
+        {
+            const requestData = 
+                {
+                    "type": "post",
+                    "url": "/index/delete",
+                    "data": 
+                    {
+                        "id" : id
+                    }
+                };
 
+                var data = await AjaxRequest(requestData);
+
+                if(data.status === 200 && data.response === "success")
+                {
+                    Swal.fire("Usuário Excuido com êxito!", "", "success");
+                    await Read();
+                }
+            }
+    });
 }
 
 const Update = () =>

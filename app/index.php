@@ -21,5 +21,9 @@
             $indexController = new IndexController();
             $indexController->SelectClient();
             break;
+        case '/index/delete':
+            $indexController = new IndexController();
+            $indexController->Delete();
+            break;
     }
 ?>
