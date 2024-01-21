@@ -54,5 +54,23 @@ class IndexController
         echo json_encode($this->client->Update($_POST));
         return;
     }
+
+    public function Create() : void
+    {
+        if(count($_POST) === 0)
+        {
+            header('Location: /');
+            return;
+        }
+
+        if(!isset($_POST["name"]) or !isset($_POST["itr"]) or !isset($_POST["birthdate"]))
+        {
+            header('Location: /');
+            return;
+        }
+
+        echo json_encode($this->client->Insert($_POST));
+        return;
+    }
 }
 ?>

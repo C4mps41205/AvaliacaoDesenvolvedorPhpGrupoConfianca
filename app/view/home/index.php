@@ -15,7 +15,7 @@
 
 <body>
     <div class="container-fluid mt-5">
-        <form id="formFilter" method="get">
+        <form id="formFilter">
             <div class="accordion" id="accordion">
                 <div class="card">
                     <div class="card-header" id="collapseFilter">
@@ -35,7 +35,8 @@
                                         <button type="button" id="buttonSearch" class="btn btn-secondary"><i
                                                 class="fa-solid fa-magnifying-glass"></i>
                                             Pesquisar</button>
-                                        <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i>
+                                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                            data-target="#CreateModal"><i class="fa-solid fa-plus"></i>
                                             Criar</button>
                                     </div>
                                 </div>
@@ -168,7 +169,7 @@
 
                                 <div class="col-lg-4">
                                     <label class="label">CPF:</label>
-                                    <input type="text" id="itrUpdate" class="form-control" >
+                                    <input type="text" id="itrUpdate" class="form-control">
                                 </div>
 
                                 <div class="col-lg-4">
@@ -259,18 +260,18 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label class="label">Nome:</label>
-                                    <input type="text" id="nameCreate" class="form-control">
+                                    <label class="label">Nome: <span style="color: red">*</span></label>
+                                    <input type="text" id="nameCreate" class="form-control" maxlength="50">
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <label class="label">CPF:</label>
+                                    <label class="label">CPF: <span style="color: red">*</span></label>
                                     <input type="text" id="itrCreate" class="form-control">
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <label class="label">Data de aniversário:</label>
-                                    <select name="birthdateCreate" class="form-control"></select>
+                                    <label class="label">Data de aniversário: <span style="color: red">*</span></label>
+                                    <input type="text" id="birthdateCreate" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -278,7 +279,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label class="label">Estado:</label>
+                                    <label class="label">Estado: <span style="color: red">*</span></label>
                                     <select name="" id="stateCreate" class="form-control">
                                         <option value="">Nada selecionado</option>
                                         <?php
@@ -291,12 +292,12 @@
 
                                 <div class="col-lg-4">
                                     <label class="label">Cidade:</label>
-                                    <input type="text" id="cityCreate" class="form-control">
+                                    <input type="text" id="cityCreate" class="form-control" maxlength="50">
                                 </div>
 
                                 <div class="col-lg-4">
                                     <label class="label">Bairro:</label>
-                                    <input type="text" id="neighborhoodCreate" class="form-control">
+                                    <input type="text" id="neighborhoodCreate" class="form-control" maxlength="100">
                                 </div>
                             </div>
                         </div>
@@ -310,15 +311,15 @@
 
                                 <div class="col-lg-4">
                                     <label class="label">E-mail:</label>
-                                    <input type="text" id="emailCreate" class="form-control">
+                                    <input type="text" id="emailCreate" class="form-control" maxlength="100">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" id="createNew" class="btn btn-primary">Salvar novo</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar alterações</button>
                 </div>
             </div>
         </div>

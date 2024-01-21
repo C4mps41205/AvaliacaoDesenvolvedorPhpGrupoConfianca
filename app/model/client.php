@@ -27,7 +27,7 @@ class Client extends Database
                 {
                     if(isset($value) and !empty($value))
                     {
-                        $stringWhere .= " " . $column . " = '". $value . "' AND";
+                        $stringWhere .= $column === "name" ? " " . $column . " like '%". $value . "%' AND" : " " . $column . " = '". $value . "' AND";
                     }
                 }
             }
@@ -41,7 +41,7 @@ class Client extends Database
 
             $mensage = array(
                 "status" => 200,
-                "response" => $fetch,
+                "response" => $fetch
             );
         } catch (PDOException $exception) 
         {
@@ -122,6 +122,44 @@ class Client extends Database
             $mensage = array(
                 "status" => 500,
                 "response" => $exception->getMessage()
+            );
+        }
+
+        return $mensage;
+    }
+
+    public function Insert($data) : array
+    {
+        $mensage = array();
+        try 
+        {
+            $sqlString = "INSERT INTO " . $this->table . " (name, itr, birthdate, state, city, neighborhood, phone, email) VALUES (:name, :itr, :birthdate, :state, :city, :neighborhood, :phone, :email)";
+
+            $query = $this->conn->prepare($sqlString);
+            
+            $query->bindValue(':name', isset($data['name']) ? $data['name'] : NULL);
+            $query->bindValue(':itr', isset($data['itr']) ? $data['itr'] : NULL);
+            $query->bindValue(':birthdate', isset($data['birthdate']) ? $data['birthdate'] : NULL);
+            $query->bindValue(':state', isset($data['state']) ? $data['state'] : null); 
+            $query->bindValue(':city', isset($data['city']) ? $data['city'] : NULL);
+            $query->bindValue(':neighborhood', isset($data['neighborhood']) ? $data['neighborhood'] : NULL);
+            $query->bindValue(':phone', isset($data['phone']) ? $data['phone'] : NULL);
+            $query->bindValue(':email', isset($data['email']) ? $data['email'] : NULL);
+            
+            if ($query->execute())
+            {
+                $mensage = array(
+                    "status" => 200,
+                    "response" => "success"
+                );
+            }
+        
+
+        } catch (PDOException $exception) 
+        {
+            $mensage = array(
+                "status" => 500,
+                "response" => $exception->getMessage(),
             );
         }
 
