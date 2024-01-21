@@ -60,7 +60,7 @@ class Client extends Database
 
         try
         {
-            $sqlSelect = "DELETE FROM ". $this->table ." WHERE id = ". $id['id'];
+            $sqlSelect = "DELETE FROM ". $this->table ." WHERE idClient = ". $id['idClient'];
             $query = $this->conn->query($sqlSelect);
 
             if($query)
@@ -74,7 +74,7 @@ class Client extends Database
         } catch (PDOException $exception) 
         {
             $mensage = array(
-                "status" => 200,
+                "status" => 500,
                 "response" => $exception->getMessage()
             );
         }
