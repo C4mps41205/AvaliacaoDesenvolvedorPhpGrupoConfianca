@@ -1,14 +1,15 @@
 <?php
-include '../model/database_credentials.php';
+include __DIR__.'/../model/database_credentials.php';
 
 class Database
 {
-    private $conn;
-    private $model;
+    protected $conn;
+    protected $model;
 
     public function __construct(DatabaseCredentials $databaseCredentials)
     {
         $this->model = $this->SetCredentials($databaseCredentials);
+        $this->CreateDb();
     }
 
     public function SetCredentials(DatabaseCredentials $model): DatabaseCredentials
@@ -45,6 +46,4 @@ class Database
         }
     }
 }
-
-$teste = new Database(new DatabaseCredentials());   
 ?>
