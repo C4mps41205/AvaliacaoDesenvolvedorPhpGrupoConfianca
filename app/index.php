@@ -16,6 +16,10 @@
         case '/':
             $indexController = new IndexController();
             $indexController->Index();
-            break;        
+            break; 
+        case '/index/select':
+            $indexController = new IndexController();
+            $indexController->SelectClient();
+            break;
     }
 ?>
