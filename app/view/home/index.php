@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <form id="formFilter" method="get">
             <div class="accordion" id="accordion">
                 <div class="card">
@@ -162,13 +162,13 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label class="label">Nome:</label>
-                                    <input type="text" id="nameUpdate" class="form-control">
+                                    <input type="text" id="nameUpdate" class="form-control" maxlength="50">
                                     <input type="hidden" disabled id="idUserUpdate" class="form-control">
                                 </div>
 
                                 <div class="col-lg-4">
                                     <label class="label">CPF:</label>
-                                    <input type="text" id="itrUpdate" class="form-control">
+                                    <input type="text" id="itrUpdate" class="form-control" >
                                 </div>
 
                                 <div class="col-lg-4">
@@ -194,12 +194,12 @@
 
                                 <div class="col-lg-4">
                                     <label class="label">Cidade:</label>
-                                    <input type="text" id="cityUpdate" class="form-control">
+                                    <input type="text" id="cityUpdate" maxlength="50" class="form-control">
                                 </div>
 
                                 <div class="col-lg-4">
                                     <label class="label">Bairro:</label>
-                                    <input type="text" id="neighborhoodUpdate" class="form-control">
+                                    <input type="text" maxlength="100" id="neighborhoodUpdate" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -213,7 +213,7 @@
 
                                 <div class="col-lg-4">
                                     <label class="label">E-mail:</label>
-                                    <input type="text" id="emailUpdate" class="form-control">
+                                    <input type="email" id="emailUpdate" class="form-control">
                                 </div>
                             </div>
                         </div>

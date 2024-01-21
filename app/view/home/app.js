@@ -1,7 +1,13 @@
 $(document).ready(() => 
 {
+    $("#itrSelect").mask('000.000.000-00');
+    $("#itrUpdate").mask('000.000.000-00');
+
     $("#birthdateSelect").mask('00/00/0000');
     $("#birthdateUpdate").mask('00/00/0000');
+    
+    $("#phoneSelect").mask('(00)00000-0000');
+    $("#phoneUpdate").mask('(00)00000-0000');
 
     Read();
     $("#buttonSearch").click(() => Read());
@@ -171,11 +177,19 @@ const Delete = async (id) =>
 
 const Update = async () =>
 {
-    if($("#idUserUpdate").val() == undefined || $("#idUserUpdate").val() == null )
+    if($("#idUserUpdate").val() == undefined || $("#idUserUpdate").val() == null)
     {
         Swal.fire("Algo deu errado. Recarregue a página", "", "error");
         return
     }
+
+    if( ($("#itrUpdate").val().length < 14 && $("#itrUpdate").val().length > 0) || 
+        ($("#birthdateUpdate").val().length < 10 && $("#birthdateUpdate").val().length > 0) ||
+        ($("#phoneUpdate").val().length < 14 && $("#phoneUpdate").val().length > 0))
+        {
+            Swal.fire("Atenção", "Os campos que contêm mascara são necessários o preenchimento total deles ou deixa-los vazios", "warning");
+            return;
+        }
 
     const requestData = 
     {
