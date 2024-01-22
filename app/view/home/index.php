@@ -162,18 +162,18 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label class="label">Nome:</label>
+                                    <label class="label">Nome: <span style="color: red">*</span></label>
                                     <input type="text" id="nameUpdate" class="form-control" maxlength="50">
                                     <input type="hidden" disabled id="idUserUpdate" class="form-control">
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <label class="label">CPF:</label>
+                                    <label class="label">CPF: <span style="color: red">*</span></label>
                                     <input type="text" id="itrUpdate" class="form-control">
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <label class="label">Data de aniversário:</label>
+                                    <label class="label">Data de aniversário: <span style="color: red">*</span></label>
                                     <input type="text" id="birthdateUpdate" class="form-control">
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label class="label">Estado:</label>
+                                    <label class="label">Estado: <span style="color: red">*</span></label>
                                     <select name="" id="stateUpdate" class="form-control">
                                         <option value="">Nada selecionado</option>
                                         <?php
