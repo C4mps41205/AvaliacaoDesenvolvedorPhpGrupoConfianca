@@ -6,11 +6,11 @@ O objetivo principal é criar uma aplicação para listar, gerenciar, consultar 
 
 <h2>Tecnologias principais</h2>
 
-PHP 8.3.1
-MySQL 8.3.0
-Docker
-Bootstrap 4.6.2
-AJAX
+PHP 8.3.1 <br>
+MySQL 8.3.0 <br>
+Docker <br>
+Bootstrap 4.6.2 <br>
+AJAX <br>
 
 <h2>Estrutura de projeto</h2>
 <p>Aqui está a estrutura do projeto:</p>
