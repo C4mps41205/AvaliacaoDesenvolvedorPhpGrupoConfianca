@@ -30,7 +30,7 @@ AJAX
 
 <b>3 - Inicie o container: </b> <br>
 
-<p>abra o terminal no diretório raiz do projeto (onde está localizado os arquivos docker-compose.yml e dockerfile) e digite no terminal <code>docker-compose up -d</code> </p>
+<p>abra o terminal no diretório raiz do projeto (onde está localizado os arquivos docker-compose.yml e dockerfile) e digite no terminal <br><code>docker-compose up -d</code> </p>
 
 <b>Caso haja sucesso com a instalação e configuração, você precisa ter esse resultado:</b>
 
@@ -57,3 +57,7 @@ senha: root-grupo-confianca
 <h3>Muito obrigado!😊</h3>
 
 <h2>Aqui está um vídeo apresentando toda a funcionalidade do projeto:</h2>  
+
+[Gravação-20240122_145913.webm](https://github.com/C4mps41205/AvaliacaoDesenvolvedorPhpGrupoConfianca/assets/93053849/812f7968-45c7-42de-816c-d45168f5c4e7)
+
+
