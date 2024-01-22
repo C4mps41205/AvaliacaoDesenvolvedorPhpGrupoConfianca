@@ -12,10 +12,11 @@ $(document).ready(() =>
     $("#phoneUpdate").mask('(00)00000-0000');
     $("#phoneCreate").mask('(00)00000-0000');
 
-    Read();
     $("#buttonSearch").click(() => Read());
     $("#Update").click(() => Update());
     $("#createNew").click(() => Insert());
+
+    Read();
 })
 const AjaxRequest = async (params = {}) => 
 {
@@ -39,22 +40,51 @@ const AjaxRequest = async (params = {}) =>
     });
 };
 
-const Insert = async () =>
+const CheckEmail = (inputId) =>
 {
-    if(($("#nameCreate").val() == undefined || $("#nameCreate").val() == '') || 
-       ($("#itrCreate").val() == undefined || $("#itrCreate").val() == '') || 
-       ($("#birthdateCreate").val() == undefined || $("#birthdateCreate").val() == '') ||
-       $("#stateCreate").val() == '')
+    if($(`#${inputId}`).val().length == 0)
     {
-        Swal.fire("Atenção", "Preencha os campos obrigatórios", "warning");
-        return;
+        return true;
     }
 
-    if( ($("#itrCreate").val().length < 14 && $("#itrCreate").val().length > 0) || 
-        ($("#birthdateCreate").val().length < 10 && $("#birthdateCreate").val().length > 0) ||
-        ($("#phoneCreate").val().length < 14 && $("#phoneCreate").val().length > 0))
+    if($(`#${inputId}`).val().indexOf('@') == -1)
     {
-        Swal.fire("Atenção", "Os campos que contêm mascara são necessários o preenchimento total deles ou deixa-los vazios", "warning");
+        Swal.fire("Atenção", "Escreva um e-mail válido", "warning");
+        return false;
+    }
+
+    return true;
+}
+
+const CheckInputs = (type) =>
+{
+    if(( $(`#name${type}`).val() == undefined || $(`#name${type}`).val() == '') || 
+        ($(`#itr${type}`).val() == undefined || $(`#itr${type}`).val() == '') || 
+        ($(`#birthdate${type}`).val() == undefined || $(`#birthdate${type}`).val() == '') ||
+        $(`#state${type}`).val() == '')
+    {
+        Swal.fire("Atenção", "Preencha os campos obrigatórios", "warning");
+        return false;
+    }
+
+    if( ($(`#itr${type}`).val().length < 14 && $(`#itr${type}`).val().length > 0) || 
+        ($(`#birthdate${type}`).val().length < 10 && $(`#birthdate${type}`).val().length > 0) ||
+        ($(`#phone${type}`).val().length < 14 && $(`#phone${type}`).val().length > 0))
+    {
+        Swal.fire("Atenção", "Os campos que contêm mascara são necessários o preenchimento total deles", "warning");
+        return false;
+    }
+
+    return true;
+}
+
+const Insert = async () =>
+{
+    let requiredInputs = CheckInputs("Create");
+    let emailinput = CheckEmail("emailCreate");
+
+    if(!emailinput || !requiredInputs)
+    {
         return;
     }
 
@@ -205,45 +235,45 @@ const Delete = async (id) =>
         denyButtonText: "Não"
     }).then(async (result) => 
       {
-        if (result.isConfirmed) 
+        if (result.dismiss) 
         {
-            const requestData = 
-            {
-                "type": "post",
-                "url": "/index/delete/" + id,
-                "data": {}
-            };
-
-            var data = await AjaxRequest(requestData);
-
-            if(data.status === 200 && data.response === "success")
-            {
-                Swal.fire("Sucesso", "Usuário excuido com êxito!", "success");
-                await Read();
-                return;
-            }
-
-            Swal.fire("Atenção", "Algo deu errado", "error");
             return;
         }
+
+        const requestData = 
+        {
+            "type": "post",
+            "url": "/index/delete/" + id,
+            "data": 
+            {
+                "delete" : true
+            }
+        };
+
+        var data = await AjaxRequest(requestData);
+
+        if(data.status === 200 && data.response === "success")
+        {
+            Swal.fire("Sucesso", "Usuário excuido com êxito!", "success");
+            await Read();
+            return;
+        }
+
+        Swal.fire("Atenção", "Algo deu errado", "error");
+        return;
+        
     });
 }
 
 const Update = async () =>
 {
-    if($("#idUserUpdate").val() == undefined || $("#idUserUpdate").val() == null)
-    {
-        Swal.fire("Atenção", "Algo deu errado. Recarregue a página", "error");
-        return
-    }
+    let requiredInputs = CheckInputs("Update");
+    let emailinput = CheckEmail("emailUpdate");
 
-    if( ($("#itrUpdate").val().length < 14 && $("#itrUpdate").val().length > 0) || 
-        ($("#birthdateUpdate").val().length < 10 && $("#birthdateUpdate").val().length > 0) ||
-        ($("#phoneUpdate").val().length < 14 && $("#phoneUpdate").val().length > 0))
-        {
-            Swal.fire("Atenção", "Os campos que contêm mascara são necessários o preenchimento total deles ou deixa-los vazios", "warning");
-            return;
-        }
+    if(!emailinput || !requiredInputs)
+    {
+        return;
+    }
 
     const requestData = 
     {

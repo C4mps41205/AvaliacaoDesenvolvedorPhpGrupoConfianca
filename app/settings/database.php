@@ -21,7 +21,7 @@ class Database
         return $model;
     }
 
-    public function CreateDb() : PDO
+    public function CreateDb() : bool
     { 
         try 
         {
@@ -34,14 +34,14 @@ class Database
             
             if(!$this->conn)
             {
-                throw new Exception("Algo deu errado na hora de se conectar ao banco de dados.");
-                die();
+                echo "Algo deu errado na hora de se conectar ao banco de dados.";
+                return false;
             }
 
-            return $this->conn;
+            return true;
         } catch (Exception $exception) 
         {
-            echo $exception->getMessage();
+            return false;
         }
     }
 }

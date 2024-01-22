@@ -34,7 +34,7 @@ class IndexController
 
     public function Delete($id) : void
     {
-        if(!isset($id))
+        if(!isset($id) || !(isset($_POST["delete"])))
         {
             echo json_encode(array(
                 "status" => 500,
