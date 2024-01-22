@@ -6,15 +6,17 @@ O objetivo principal é criar uma aplicação para listar, gerenciar, consultar 
 
 <h2>Tecnologias principais</h2>
 
-PHP 8.3.1
-MySQL 8.3.0
-Docker
-Bootstrap 4.6.2
-AJAX
+PHP 8.3.1 <br>
+MySQL 8.3.0 <br>
+Docker <br>
+Bootstrap 4.6.2 <br>
+AJAX <br>
 
 <h2>Estrutura de projeto</h2>
 <p>Aqui está a estrutura do projeto:</p>
-<img src="">
+
+![image](https://github.com/C4mps41205/AvaliacaoDesenvolvedorPhpGrupoConfianca/assets/93053849/94c3e237-0415-4f22-81d8-b24bd6a4cbcb)
+
 
 <h2>Instalação e Funcionamento</h2>
 
@@ -28,19 +30,20 @@ AJAX
 
 <b>3 - Inicie o container: </b> <br>
 
-<p>abra o terminal no diretório raiz do projeto (onde está localizado os arquivos docker-compose.yml e dockerfile) e digite no terminal docker-compose up -d</p>
+<p>abra o terminal no diretório raiz do projeto (onde está localizado os arquivos docker-compose.yml e dockerfile) e digite no terminal <br><code>docker-compose up -d</code> </p>
 
 <b>Caso haja sucesso com a instalação e configuração, você precisa ter esse resultado:</b>
 
-<img src="">
+![image](https://github.com/C4mps41205/AvaliacaoDesenvolvedorPhpGrupoConfianca/assets/93053849/626852d0-c222-4fdd-8780-a8b39123e034)
+
 
 <b>4 - Acesso ao banco de dados </b>
 
-<p>para testar, você preisa criar uma nova instância de banco de dados MySQL utilizando as seguintes credênciais: </p>
+<p>para testar, você precisa criar uma nova instância de banco de dados MySQL utilizando as seguintes credênciais: </p>
 
-host: ipv4 da máquina
-porta: 3306
-usuario: root
+host: ipv4 da máquina <br>
+porta: 3306 <br>
+usuario: root <br>
 senha: root-grupo-confianca
 
 <p>Para criar o banco, acesse o arquivo</p>
@@ -54,3 +57,7 @@ senha: root-grupo-confianca
 <h3>Muito obrigado!😊</h3>
 
 <h2>Aqui está um vídeo apresentando toda a funcionalidade do projeto:</h2>  
+
+[Gravação-20240122_145913.webm](https://github.com/C4mps41205/AvaliacaoDesenvolvedorPhpGrupoConfianca/assets/93053849/812f7968-45c7-42de-816c-d45168f5c4e7)
+
+
