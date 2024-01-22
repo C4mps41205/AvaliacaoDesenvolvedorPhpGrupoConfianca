@@ -154,12 +154,12 @@ const CreateTable = (data) =>
             <tr>
                 <td style="text-align: center">Nome</td>
                 <td style="text-align: center">CPF</td>
-                <td style="text-align: center">data de aniversário</td>
+                <td style="text-align: center">Data de aniversário</td>
                 <td style="text-align: center">Estado</td>
                 <td style="text-align: center">Cidade</td>
                 <td style="text-align: center">Bairro</td>
                 <td style="text-align: center">Celular</td>
-                <td style="text-align: center">Email</td>
+                <td style="text-align: center">E-mail</td>
                 <td style="text-align: center">Ações</td>
             </tr>
         </thead>
@@ -254,7 +254,7 @@ const Delete = async (id) =>
 
         if(data.status === 200 && data.response === "success")
         {
-            Swal.fire("Sucesso", "Usuário excuido com êxito!", "success");
+            Swal.fire("Sucesso", "Usuário excluido com êxito!", "success");
             await Read();
             return;
         }

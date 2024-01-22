@@ -12,26 +12,26 @@ class State extends Database
 
     public function SelectAll() : array
     {
-        $mensage = array();
+        $message = array();
         try 
         {
             $sqlSelect = "SELECT * FROM ". $this->table ;
             $query = $this->conn->query($sqlSelect);
             $fetch = $query->fetchAll();
 
-            $mensage = array(
+            $message = array(
                 "status" => 200,
                 "response" => $fetch,
             );
         } catch (PDOException $exception) 
         {
-            $mensage = array(
+            $message = array(
                 "status" => 200,
                 "response" => $exception->getMessage()
             );
         }
 
-        return $mensage;
+        return $message;
     }
 }
 ?>

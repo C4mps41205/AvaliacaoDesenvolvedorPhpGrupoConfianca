@@ -23,7 +23,7 @@ class IndexController
         {
             echo json_encode(array(
                 "status" => 500,
-                "mensage" => "data doesn't came with success"
+                "message" => "data doesn't came with success"
             ));
             return;
         }
@@ -38,7 +38,7 @@ class IndexController
         {
             echo json_encode(array(
                 "status" => 500,
-                "mensage" => "data doesn't came with success"
+                "message" => "data doesn't came with success"
             ));
             return;
         }
@@ -53,7 +53,7 @@ class IndexController
         {
             echo json_encode(array(
                 "status" => 500,
-                "mensage" => "data doesn't came with success"
+                "message" => "data doesn't came with success"
             ));
             return;   
         }
@@ -68,7 +68,7 @@ class IndexController
         {
             echo json_encode(array(
                 "status" => 500,
-                "mensage" => "data doesn't came with success"
+                "message" => "data doesn't came with success"
             ));
             return;
         }
@@ -77,7 +77,7 @@ class IndexController
         {
             echo json_encode(array(
                 "status" => 500,
-                "mensage" => "data doesn't came with success"
+                "message" => "data doesn't came with success"
             ));
             return;
         }

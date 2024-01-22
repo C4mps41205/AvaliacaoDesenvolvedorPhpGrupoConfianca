@@ -1,5 +1,4 @@
 <?php
-
 class NotFoundController
 {
     public function Index() : void

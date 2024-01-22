@@ -11,7 +11,7 @@ class Client extends Database
 
     public function Select($where = null) : array
     {
-        $mensage = array();
+        $message = array();
         $stringWhere = " WHERE ";
         try 
         {
@@ -25,7 +25,7 @@ class Client extends Database
                 {
                     if(isset($value) and !empty($value))
                     {
-                        $stringWhere .= $column === "name" ? " " . $column . " like '%". $value . "%' AND" : " " . $column . " = '". $value . "' AND";
+                        $stringWhere .= $column === "name" ? " " . $column . " like '%" . $value . "%' AND" : " " . $column . " = '". $value . "' AND";
                     }
                 }
             }
@@ -37,24 +37,24 @@ class Client extends Database
             $query = $this->conn->query($sqlSelect);
             $fetch = $query->fetchAll();
 
-            $mensage = array(
+            $message = array(
                 "status" => 200,
                 "response" => $fetch
             );
         } catch (PDOException $exception) 
         {
-            $mensage = array(
+            $message = array(
                 "status" => 500,
                 "response" => $exception->getMessage()
             );
         }
 
-        return $mensage;
+        return $message;
     }
 
     public function Delete($id = null) : array
     {
-        $mensage = array();
+        $message = array();
 
         try
         {
@@ -63,7 +63,7 @@ class Client extends Database
 
             if($query)
             {
-                $mensage = array(
+                $message = array(
                     "status" => 200,
                     "response" => "success",
                 );
@@ -71,18 +71,18 @@ class Client extends Database
 
         } catch (PDOException $exception) 
         {
-            $mensage = array(
+            $message = array(
                 "status" => 500,
                 "response" => $exception->getMessage()
             );
         }
 
-        return $mensage;
+        return $message;
     }
 
     public function Update($data) : array
     {
-        $mensage = array();
+        $message = array();
         try 
         {
             $sqlString = "UPDATE " . $this->table . " SET name = :name,
@@ -109,7 +109,7 @@ class Client extends Database
 
             if($query->execute())
             {
-                $mensage = array(
+                $message = array(
                     "status" => 200,
                     "response" => "success"
                 );
@@ -117,18 +117,18 @@ class Client extends Database
 
         } catch (PDOException $exception) 
         {
-            $mensage = array(
+            $message = array(
                 "status" => 500,
                 "response" => $exception->getMessage()
             );
         }
 
-        return $mensage;
+        return $message;
     }
 
     public function Insert($data) : array
     {
-        $mensage = array();
+        $message = array();
         try 
         {
             $sqlString = "INSERT INTO " . $this->table . " (name, itr, birthdate, state, city, neighborhood, phone, email) VALUES (:name, :itr, :birthdate, :state, :city, :neighborhood, :phone, :email)";
@@ -146,7 +146,7 @@ class Client extends Database
             
             if ($query->execute())
             {
-                $mensage = array(
+                $message = array(
                     "status" => 200,
                     "response" => "success"
                 );
@@ -155,13 +155,13 @@ class Client extends Database
 
         } catch (PDOException $exception) 
         {
-            $mensage = array(
+            $message = array(
                 "status" => 500,
                 "response" => $exception->getMessage(),
             );
         }
 
-        return $mensage;
+        return $message;
     }
 }
 ?>
