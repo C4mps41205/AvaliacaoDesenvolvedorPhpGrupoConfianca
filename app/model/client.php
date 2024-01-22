@@ -1,6 +1,4 @@
 <?php
-include __DIR__.'/../settings/database.php';
-
 class Client extends Database
 {
     private string $table;
@@ -60,7 +58,7 @@ class Client extends Database
 
         try
         {
-            $sqlSelect = "DELETE FROM ". $this->table ." WHERE idClient = ". $id['idClient'];
+            $sqlSelect = "DELETE FROM ". $this->table ." WHERE idClient = ". $id;
             $query = $this->conn->query($sqlSelect);
 
             if($query)

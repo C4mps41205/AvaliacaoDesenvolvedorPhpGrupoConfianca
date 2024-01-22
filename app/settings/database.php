@@ -1,10 +1,9 @@
 <?php
-include __DIR__.'/../model/database_credentials.php';
 
 class Database
 {
-    protected $conn;
-    protected $model;
+    protected PDO $conn;
+    protected DatabaseCredentials $model;
 
     public function __construct(DatabaseCredentials $databaseCredentials)
     {

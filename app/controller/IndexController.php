@@ -1,6 +1,4 @@
 <?php
-include __DIR__.'/../model/client.php';
-include __DIR__.'/../model/state.php';
 class IndexController 
 {
     private DatabaseCredentials $databaseCredentials;
@@ -23,7 +21,10 @@ class IndexController
     {
         if(!isset($_POST) or count($_POST) === 0)
         {
-            header('Location: /');
+            echo json_encode(array(
+                "status" => 500,
+                "mensage" => "data doesn't came with success"
+            ));
             return;
         }
 
@@ -31,15 +32,18 @@ class IndexController
         return;
     }
 
-    public function Delete() : void
+    public function Delete($id) : void
     {
-        if(!isset($_POST['idClient']))
+        if(!isset($id))
         {
-            header('Location: /');
+            echo json_encode(array(
+                "status" => 500,
+                "mensage" => "data doesn't came with success"
+            ));
             return;
         }
 
-        echo json_encode($this->client->Delete($_POST));
+        echo json_encode($this->client->Delete($id[0]));
         return;
     }
 
@@ -47,7 +51,10 @@ class IndexController
     {
         if(count($_POST) === 0 or !isset($_POST["idClient"]))
         {
-            header('Location: /');
+            echo json_encode(array(
+                "status" => 500,
+                "mensage" => "data doesn't came with success"
+            ));
             return;   
         }
 
@@ -59,13 +66,19 @@ class IndexController
     {
         if(count($_POST) === 0)
         {
-            header('Location: /');
+            echo json_encode(array(
+                "status" => 500,
+                "mensage" => "data doesn't came with success"
+            ));
             return;
         }
 
         if(!isset($_POST["name"]) or !isset($_POST["itr"]) or !isset($_POST["birthdate"]))
         {
-            header('Location: /');
+            echo json_encode(array(
+                "status" => 500,
+                "mensage" => "data doesn't came with success"
+            ));
             return;
         }
 
