@@ -36,7 +36,7 @@ AJAX <br>
 
 ![image](https://github.com/C4mps41205/AvaliacaoDesenvolvedorPhpGrupoConfianca/assets/93053849/626852d0-c222-4fdd-8780-a8b39123e034)
 
-<p>PS: vale ressaltar que assim que o conatiner tiver acabado de criar <b>pode acontecer</b> do container mysql ainda estar inicializando, ocorrendo em um erro assim que abrir o localhost:8080 </p>
+<p>PS: vale ressaltar que assim que o container tiver acabado de criar <b>pode acontecer</b> do container mysql ainda estar inicializando, ocorrendo em um erro assim que abrir o localhost:8080 </p>
 
 <b>4 - Acesso ao banco de dados </b>
 
